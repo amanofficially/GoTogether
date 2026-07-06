@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors — "night route" palette: asphalt ink, signal amber, transit green */
+  --color-ink: #0F1B2B;
+  --color-ink-soft: #1B2C40;
+  --color-paper: #F6F5F1;
+  --color-paper-dim: #ECEAE3;
+  --color-mist: #C9D6DD;
+  --color-line: #3D5A73;
+  --color-route: #FF8A00;
+  --color-route-dim: #FFB35C;
+  --color-transit: #2E7D5B;
+  --color-transit-dim: #DCEDE4;
+  --color-alert: #D64545;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tag {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+::selection {
+  background-color: var(--color-route);
+  color: var(--color-paper);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-route);
+  outline-offset: 2px;
+}
+
+/* Dashed route rule used as a signature divider */
+.route-rule {
+  border: none;
+  border-top: 2.5px dashed var(--color-line);
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-paper-dim); }
+::-webkit-scrollbar-thumb { background: var(--color-mist); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-line); }
